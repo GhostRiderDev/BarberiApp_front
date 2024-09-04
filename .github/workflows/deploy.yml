@@ -48,3 +48,4 @@ jobs:
           github_token: ${{ secrets.DEPLOY_BARBER_TOKEN }}
           publish_dir: ./dist
 
+
