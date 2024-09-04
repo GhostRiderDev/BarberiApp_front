@@ -1,8 +1,8 @@
 const Home = () => {
   return (
-    <>
-      <div className="bg-home"></div>
-    </>
+    <div>
+      <h1>Home</h1>
+    </div>
   );
 };
 
