@@ -84,3 +84,4 @@ const CardBarber: React.FC = () => {
 };
 
 export default CardBarber;
+
