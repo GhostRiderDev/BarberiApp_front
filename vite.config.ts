@@ -9,4 +9,3 @@ export default defineConfig({
   plugins: [react()],
   base: "https://ghostriderdev.github.io/BarberiApp_front/",
 });
-
