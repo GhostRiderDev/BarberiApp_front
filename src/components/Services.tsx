@@ -10,24 +10,24 @@ const servicesData: IService[] = [
   {
     titulo: "Búsqueda de Barberías",
     descripcion: "Encuentra las mejores barberías cerca de ti.",
-    image: "public/map.jpg",
+    image: "/map.jpg",
   },
   {
     titulo: "Reserva de Citas",
     descripcion: "Reserva tu cita con los mejores barberos.",
-    image: "public/appointment.jpg",
+    image: "/appointment.jpg",
   },
   {
     titulo: "Gestión de Barberos",
     descripcion:
       "Los barberos pueden organizar sus turnos, cliente y disponibilidad.",
-    image: "public/user-management.jpg",
+    image: "/user-management.jpg",
   },
   {
     titulo: "Opciones de Pago",
     descripcion:
       "Paga de manera fácil y segura con banca digital o en efectivo cuando reserves tu turno.",
-    image: "public/payments.jpg",
+    image: "/payments.jpg",
   },
 ];
 
