@@ -3,7 +3,6 @@ import "./styles/App.css";
 import Home from "./views/Home";
 import NotFound from "./views/NotFound";
 import Footer from "./components/Footer";
-import Footer from "./components/Footer";
 
 function App() {
   return (
