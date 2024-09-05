@@ -38,3 +38,4 @@ const NavbarLanding: React.FC = () => {
 };
 
 export default NavbarLanding;
+
