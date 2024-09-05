@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <div className="py-4">
+        <div className="">
             <div className="flex flex-col items-center justify-center md:flex-row md:justify-between md:items-center md:max-w-[1000px] md:mx-auto md:px-4">
                 <div className="flex items-center ">
                     <img src="./logodemo.png" alt="logo" className="h-16 -ml-3" />
