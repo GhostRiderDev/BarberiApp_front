@@ -1,47 +1,79 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
 const CardBarber: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [cardsPerPage, setCardsPerPage] = useState(1);
+
 
     const barbers = [
         {
             id: 1,
             name: "Te las cortas",
             location: "Calle 123, Ciudad, País",
-            bannerUrl: "https://i.pravatar.cc/150?u=barberia1",
+            bannerUrl: "/bg-home.jpg",
         },
         {
             id: 2,
             name: "Corte Elegante",
             location: "Avenida 456, Ciudad, País",
-            bannerUrl: "https://i.pravatar.cc/150?u=barberia2"
+            bannerUrl: "/bg-home.jpg"
         },
         {
             id: 3,
             name: "Barbería Premium",
             location: "Boulevard 789, Ciudad, País",
-            bannerUrl: "https://i.pravatar.cc/150?u=barberia3"
+            bannerUrl: "/bg-home.jpg"
+        },
+        {
+            id: 4,
+            name: "Estilo Moderno",
+            location: "Calle 987, Ciudad, País",
+            bannerUrl: "/bg-home.jpg"
+        },
+        {
+            id: 5,
+            name: "Barbería de Lujo",
+            location: "Avenida 321, Ciudad, País",
+            bannerUrl: "/bg-home.jpg"
         }
     ];
 
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            if (width >= 1024) {
+                setCardsPerPage(4); 
+            } else if (width >= 768) {
+                setCardsPerPage(2); 
+            } else {
+                setCardsPerPage(1); 
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); 
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const handleNext = () => {
-        if (currentIndex < barbers.length - 1) {
-            setCurrentIndex(currentIndex + 1);
+        if (currentIndex < barbers.length - cardsPerPage) {
+            setCurrentIndex(currentIndex + cardsPerPage);
         }
     };
 
     const handlePrev = () => {
         if (currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
+            setCurrentIndex(currentIndex - cardsPerPage);
         }
     };
 
     return (
-        <div className="flex flex-row justify-center items-center">
+        <div className="flex flex-row w-full h-full items-center justify-center gap-4">
+
             <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
@@ -50,38 +82,44 @@ const CardBarber: React.FC = () => {
                 <MdOutlineNavigateBefore />
             </button>
 
-            <div className="w-[300px] rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out">
-                <img 
-                    src={barbers[currentIndex].bannerUrl} 
-                    alt={`Imagen de ${barbers[currentIndex].name}`} 
-                    className="w-full h-48 object-cover rounded-t-lg" 
-                />
-                <div className="flex flex-col gap-2 p-4 bg-[#D6D6D6] rounded-b-xl">
-                    <h2 className="text-xl font-semibold">{barbers[currentIndex].name}</h2>
-                    <div className="flex items-center text-gray-600 mt-2">
-                        <IoLocationOutline className="mr-2 text-red-600 text-xl" />
-                        <span className='text-black'>{barbers[currentIndex].location}</span>
+            <div className="flex gap-4 overflow-hidden">
+                {barbers.slice(currentIndex, currentIndex + cardsPerPage).map((barber) => (
+                    <div key={barber.id} className="w-[300px] h-[80%] rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out">
+                        <img 
+                            src={barber.bannerUrl} 
+                            alt={`Imagen de ${barber.name}`} 
+                            className="w-full h-[50%] object-cover rounded-t-lg" 
+                        />
+                        <div className="flex h-[50%] flex-col gap-2 px-4 py-2 bg-[#d6d6d630] rounded-b-xl">
+                            <h2 className="text-xl text-white font-semibold">{barber.name}</h2>
+                            <div className="flex items-center text-gray-600">
+                                <IoLocationOutline className="mr-2 text-red-600 text-xl" />
+                                <span className='text-white'>{barber.location}</span>
+                            </div>
+                            <div className='flex flex-row gap-2  text-yellow-400'>
+                                <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                            </div>
+                            <div className="flex flex-row flex-wrap gap-4">
+                                <div className="text-sm bg-white px-3 py-1 rounded-xl text-gray-800">Cabello</div>
+                                <div className="text-sm bg-white px-3 py-1 rounded-xl text-gray-800">Cejas</div>
+                                <div className="text-sm bg-white px-3 py-1 rounded-xl text-gray-800">Barba</div>
+                            </div>
+                        </div>
                     </div>
-                    <div className='flex flex-row gap-2  text-yellow-400'>
-                        <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
-                    </div>
-                    <div className="flex flex-row flex-wrap  gap-4">
-                        <div className="text-sm bg-white px-3 py-1 rounded-xl text-gray-800">Cabello</div>
-                        <div className="text-sm bg-white px-3 py-1 rounded-xl text-gray-800">Cabello</div>
-                        <div className="text-sm bg-white px-3 py-1 rounded-xl text-gray-800">Cabello</div>
-                    </div>
-                </div>
+                ))}
             </div>
 
+            {/* Botón para avanzar */}
             <button
                 onClick={handleNext}
-                disabled={currentIndex === barbers.length - 1}
-                className={`text-5xl ${currentIndex === barbers.length - 1 ? 'text-gray-400' : 'text-white'}`}
+                disabled={currentIndex >= barbers.length - cardsPerPage}
+                className={`text-5xl ${currentIndex >= barbers.length - cardsPerPage ? 'text-gray-400' : 'text-white'}`}
             >
                 <MdOutlineNavigateNext />
             </button>
         </div>
     );
 };
+
 
 export default CardBarber;
