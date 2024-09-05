@@ -7,6 +7,7 @@ const CardBarber: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cardsPerPage, setCardsPerPage] = useState(1);
 
+
     const barbers = [
         {
             id: 1,
@@ -72,6 +73,7 @@ const CardBarber: React.FC = () => {
 
     return (
         <div className="flex flex-row w-full h-full items-center justify-center gap-4">
+
             <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
