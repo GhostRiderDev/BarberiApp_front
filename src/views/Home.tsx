@@ -1,6 +1,6 @@
 import Services from "../components/Services";
 import CardBarber from "../components/CardBarber";
-import NavbarLanding from "../components/NavbarLanding";
+// import NavbarLanding from "../components/NavbarLanding";
 import SearchBarber from "../components/search-barber/SearchBarber";
 
 const Home: React.FC = () => {
