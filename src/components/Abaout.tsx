@@ -1,7 +1,7 @@
 
 const Abaout = () => {
     const handleInfo = () => {
-        window.location.href = "/business-page";
+        window.location.href = "/business";
     }
     return (
         <>
