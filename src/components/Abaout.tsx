@@ -3,6 +3,7 @@ const Abaout = () => {
     const handleInfo = () => {
         window.location.href = "/business-page";
     }
+
     return (
         <>
             <div className="bg-gray-100 py-8 flex flex-col md:flex-row md:gap-10">
@@ -12,6 +13,7 @@ const Abaout = () => {
                     <div className="text-lg font-sans md:text-2xl">Potencie su negocio de forma gratuita con la mejor plataforma de reservas para servicios de barberias.</div>
                     <div className="">
                         <button onClick={handleInfo} className="bg-slate-800 text-white font-bold rounded-[30px] p-4 text-lg lg:mt-6">Mas Informacion</button>
+
                     </div>
 
                 </div>
