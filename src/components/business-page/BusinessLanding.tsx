@@ -7,7 +7,7 @@ const Business = () => {
         <>
             <div className="w-full xl:w-full relative">
                 <NavbarLanding />
-                <div className="bg-home2 gap-20 flex flex-col w-full h-[450px] rounded-b-[40px] md:rounded-b-[220px]">
+                <div className="bg-home2 gap-20 flex flex-col w-full h-[450px] ">
                     <div className="flex flex-col gap-3 z-10 relative pt-[80px]">
                         <div className="text-3xl text-center text-white font-bold lg:text-5xl">El mejor software para barberias y spas</div>
                         <div className="text-2xl text-white text-center m-2 font-semibold lg:text-2xl">Un software de reservas sencillo, flexible y potente para tu negocio. ¡Y totalmente gratis!</div>
