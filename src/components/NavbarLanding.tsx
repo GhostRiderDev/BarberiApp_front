@@ -27,7 +27,7 @@ const NavbarLanding: React.FC = () => {
       <div className="flex justify-between w-full mx-auto px-4 md:max-w-[1400px] md:mx-auto">
         <div className="flex items-center text-white">
           <img src="./logodemo.png" alt="logo" className="h-16 -ml-3" />
-          <span className="-ml-4 font-bold">BarberClick</span>
+          <a href="/" className="-ml-4 font-bold">BarberClick</a>
         </div>
         <div className="flex items-center">
           <button className="relative px-3 py-1 overflow-hidden text-white border border-white rounded-full group">
