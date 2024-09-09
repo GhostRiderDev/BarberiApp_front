@@ -2,6 +2,7 @@ import Services from "../components/Services";
 import CardBarber from "../components/CardBarber";
 import NavbarLanding from "../components/NavbarLanding";
 import SearchBarber from "../components/search-barber/SearchBarber";
+import Abaout from "@/components/Abaout";
 
 const Home: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const Home: React.FC = () => {
             <CardBarber />
           </div>
         </div>
+        <Abaout />
         <Services />
       </div>
     </>
