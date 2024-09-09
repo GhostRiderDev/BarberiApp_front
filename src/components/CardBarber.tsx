@@ -54,7 +54,7 @@ const CardBarber: React.FC = () => {
         };
 
         window.addEventListener('resize', handleResize);
-        handleResize(); 
+        handleResize(); // Ajuste inicial
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -96,7 +96,7 @@ const CardBarber: React.FC = () => {
                                 <IoLocationOutline className="mr-2 text-red-600 text-xl" />
                                 <span className='text-white'>{barber.location}</span>
                             </div>
-                            <div className='flex flex-row gap-2  text-yellow-400'>
+                            <div className='flex flex-row gap-2 text-yellow-400'>
                                 <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
                             </div>
                             <div className="flex flex-row flex-wrap gap-4">
@@ -109,7 +109,6 @@ const CardBarber: React.FC = () => {
                 ))}
             </div>
 
-            {/* Botón para avanzar */}
             <button
                 onClick={handleNext}
                 disabled={currentIndex >= barbers.length - cardsPerPage}
