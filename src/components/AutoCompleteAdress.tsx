@@ -12,7 +12,6 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export default function Places() {
-  
   return <PlacesAutocomplete />;
 }
 
