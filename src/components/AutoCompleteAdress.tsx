@@ -85,6 +85,7 @@ const PlacesAutocomplete = () => {
       );
     }
 
+
   };
 
   const handleSelect = async (address: string) => {
