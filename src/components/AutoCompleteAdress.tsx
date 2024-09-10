@@ -45,7 +45,7 @@ const PlacesAutocomplete = () => {
         document.createElement("div")
       );
     }
-  }, []);
+  }, [autocompleteService, placesService]);
 
   const handleSearchBarbers = async (
     city: string,
@@ -84,18 +84,10 @@ const PlacesAutocomplete = () => {
           } else {
             setSuggestions([]);
           }
-
         }
       );
     }
-  };
 
-  const getGeoProperty = (
-    results: google.maps.GeocoderResult[],
-    property: string
-  ) => {
-    return results[0].address_components.find((c) => c.types.includes(property))
-      ?.long_name;
   };
 
   const getGeoProperty = (
