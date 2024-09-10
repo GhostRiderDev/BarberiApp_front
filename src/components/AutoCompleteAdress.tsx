@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { getGeocode } from "use-places-autocomplete";
 import { Input } from "./ui/input";
 import { FaMapLocationDot } from "react-icons/fa6";
@@ -35,16 +36,24 @@ const PlacesAutocomplete = () => {
 
   useEffect(() => {
     if (!autocompleteService.current && window.google) {
+    if (!autocompleteService.current && window.google) {
       autocompleteService.current =
         new window.google.maps.places.AutocompleteService();
     }
+    if (!placesService.current && window.google) {
     if (!placesService.current && window.google) {
       placesService.current = new window.google.maps.places.PlacesService(
         document.createElement("div")
       );
     }
   }, [autocompleteService, placesService]);
+  }, [autocompleteService, placesService]);
 
+  const handleSearchBarbers = async (
+    city: string,
+    province: string,
+    address: string
+  ) => {
   const handleSearchBarbers = async (
     city: string,
     province: string,
@@ -131,11 +140,18 @@ const PlacesAutocomplete = () => {
 
       <div className="absolute left-3 top-[6px]">
         <FaMapLocationDot className="w-6 h-6 text-violet-700 " />
+
       </div>
 
       <div className="absolute right-3 top-[3px]">
         <button
           className="text-white bg-violet-700 px-4 py-1 rounded-2xl font-bold"
+          onClick={() => {
+            if (window.location.pathname === "/") {
+              navigate("/barberias");
+              return;
+            }
+          }}
           onClick={() => {
             if (window.location.pathname === "/") {
               navigate("/barberias");
