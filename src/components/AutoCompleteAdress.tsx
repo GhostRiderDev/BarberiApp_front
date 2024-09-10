@@ -6,8 +6,6 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import { findBarberiasByCityAndProvince } from "@/services/barberiaService";
 import { HomeContext } from "@/views/Home";
 
-import { FaMapLocationDot } from "react-icons/fa6";
-
 export default function Places() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
