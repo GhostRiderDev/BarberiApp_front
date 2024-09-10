@@ -3,6 +3,8 @@ import { useLoadScript } from "@react-google-maps/api";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
 import { Input } from "./ui/input";
 
+import { FaMapLocationDot } from "react-icons/fa6";
+
 export default function Places() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -72,11 +74,19 @@ const PlacesAutocomplete = () => {
   return (
     <div className="relative w-full">
       <Input
-        className="flex flex-row text-md items-center cursor-pointer duration-300 transition-all gap-2 px-6 bg-white p-2 rounded-[50px]"
+
+        placeholder="Buscar..."
+        className=" pl-[25px] text-md cursor-pointer duration-300 transition-all bg-white rounded-[50px]"
         value={inputValue}
         onChange={handleInputChange}
         aria-expanded={open}
       />
+
+      <div className="absolute right-3 top-[6px]">
+        <FaMapLocationDot className="w-6 h-6 text-violet-700 " />
+
+      </div>
+
 
       {open && (
         <div className="absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded-md shadow-lg">
