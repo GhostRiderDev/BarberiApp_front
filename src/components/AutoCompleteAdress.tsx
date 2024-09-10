@@ -84,7 +84,6 @@ const PlacesAutocomplete = () => {
         }
       );
     }
-  };
 
   function getGeoProperty(
     results: google.maps.GeocoderResult[],
@@ -93,6 +92,7 @@ const PlacesAutocomplete = () => {
     return results[0].address_components.find((c) => c.types.includes(property))
       ?.long_name;
   }
+
 
   const handleSelect = async (address: string) => {
     setInputValue(address);
