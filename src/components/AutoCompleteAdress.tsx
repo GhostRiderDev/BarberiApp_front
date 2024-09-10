@@ -11,6 +11,7 @@ import {
 } from "@/store/barberiasStore";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Places() {
   return <PlacesAutocomplete />;
 }
@@ -24,6 +25,7 @@ const PlacesAutocomplete = () => {
     (state: IBarberiasStore) => state.setBarberias
   );
   const navigate = useNavigate();
+
 
   const [suggestions, setSuggestions] = useState<
     google.maps.places.AutocompletePrediction[]
@@ -58,6 +60,7 @@ const PlacesAutocomplete = () => {
     setBarberias(barberiasFound);
     setLocation({ city, province, address });
     navigate("/barberias");
+
   };
 
   const handleInputChange = (e: { target: { value: string } }) => {
@@ -84,6 +87,7 @@ const PlacesAutocomplete = () => {
         }
       );
     }
+
   };
 
   const getGeoProperty = (
@@ -111,6 +115,7 @@ const PlacesAutocomplete = () => {
         getGeoProperty(results, "administrative_area_level_1") || "";
 
       handleSearchBarbers(city, province, address);
+
     } catch (error) {
       console.log("Error: ", error);
     }
@@ -131,6 +136,7 @@ const PlacesAutocomplete = () => {
 
       <div className="absolute left-3 top-[6px]">
         <FaMapLocationDot className="w-6 h-6 text-violet-700 " />
+
       </div>
 
       <div className="absolute right-3 top-[3px]">
