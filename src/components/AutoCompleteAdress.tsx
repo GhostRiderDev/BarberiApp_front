@@ -85,8 +85,14 @@ const PlacesAutocomplete = () => {
       );
     }
 
+  function getGeoProperty(
+    results: google.maps.GeocoderResult[],
+    property: string
+  ) {
+    return results[0].address_components.find((c) => c.types.includes(property))
+      ?.long_name;
+  }
 
-  };
 
   const handleSelect = async (address: string) => {
     setInputValue(address);
@@ -125,7 +131,6 @@ const PlacesAutocomplete = () => {
 
       <div className="absolute left-3 top-[6px]">
         <FaMapLocationDot className="w-6 h-6 text-violet-700 " />
-
       </div>
 
       <div className="absolute right-3 top-[3px]">
