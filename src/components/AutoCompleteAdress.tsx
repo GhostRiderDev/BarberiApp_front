@@ -86,7 +86,7 @@ const PlacesAutocomplete = () => {
     }
   };
 
-  const getGeoProperti = (
+  const getGeoProperty = (
     results: google.maps.GeocoderResult[],
     property: string
   ) => {
