@@ -43,7 +43,7 @@ const PlacesAutocomplete = () => {
         document.createElement("div")
       );
     }
-  }, []);
+  }, [autocompleteService, placesService]);
 
   const handleSearchBarbers = async (
     city: string,
