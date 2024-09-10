@@ -133,7 +133,6 @@ const PlacesAutocomplete = () => {
         </button>
       </div>
 
-
       {open && (
         <div className="absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded-md shadow-lg">
           {suggestions.length > 0 ? (
