@@ -1,25 +1,29 @@
-import { useState, useRef, useEffect, useContext } from "react";
-import { useLoadScript } from "@react-google-maps/api";
+import { useState, useRef, useEffect } from "react";
 import { getGeocode } from "use-places-autocomplete";
 import { Input } from "./ui/input";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { findBarberiasByCityAndProvince } from "@/services/barberiaService";
-import { HomeContext } from "@/views/Home";
+import {
+  IBarberiasStore,
+  ILocationStore,
+  useBarberiasStore,
+  useLocationStore,
+} from "@/store/barberiasStore";
+import { useNavigate } from "react-router-dom";
 
 export default function Places() {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-    libraries: ["places"],
-  });
-
-  if (!isLoaded) return <div>Loading...</div>;
   return <PlacesAutocomplete />;
 }
 
 const PlacesAutocomplete = () => {
-  const homeContext = useContext(HomeContext);
-  console.log("Home context: ", homeContext);
-  const [inputValue, setInputValue] = useState("");
+  const { location, setLocation } = useLocationStore(
+    (state: ILocationStore) => state
+  );
+  const [inputValue, setInputValue] = useState(location.address || "");
+  const setBarberias = useBarberiasStore(
+    (state: IBarberiasStore) => state.setBarberias
+  );
+  const navigate = useNavigate();
 
   const [suggestions, setSuggestions] = useState<
     google.maps.places.AutocompletePrediction[]
@@ -30,23 +34,30 @@ const PlacesAutocomplete = () => {
   const placesService = useRef<google.maps.places.PlacesService | null>(null);
 
   useEffect(() => {
-    if (!autocompleteService.current) {
+    if (!autocompleteService.current && window.google) {
       autocompleteService.current =
         new window.google.maps.places.AutocompleteService();
     }
-    if (!placesService.current) {
+    if (!placesService.current && window.google) {
       placesService.current = new window.google.maps.places.PlacesService(
         document.createElement("div")
       );
     }
   }, []);
 
-  const handleSearchBarbers = async (city: string, province: string) => {
+  const handleSearchBarbers = async (
+    city: string,
+    province: string,
+    address: string
+  ) => {
     console.log("City: ", city);
     console.log("Province: ", province);
     const barberiasFound = await findBarberiasByCityAndProvince(city, province);
-    homeContext.barberias = barberiasFound;
-    console.log("Barberias found: ", homeContext.barberias);
+    console.log("Barberias found: ", barberiasFound);
+    console.log("Address: ", address);
+    setBarberias(barberiasFound);
+    setLocation({ city, province, address });
+    navigate("/barberias");
   };
 
   const handleInputChange = (e: { target: { value: string } }) => {
@@ -54,23 +65,25 @@ const PlacesAutocomplete = () => {
     setInputValue(value);
     setOpen(true);
 
-    autocompleteService.current!.getPlacePredictions(
-      {
-        input: value,
-        componentRestrictions: { country: "co" },
-        types: ["(regions)"],
-      },
-      (
-        predictions: google.maps.places.AutocompletePrediction[] | null,
-        status: google.maps.places.PlacesServiceStatus
-      ) => {
-        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-          setSuggestions(predictions || []);
-        } else {
-          setSuggestions([]);
+    if (autocompleteService.current) {
+      autocompleteService.current.getPlacePredictions(
+        {
+          input: value,
+          componentRestrictions: { country: "co" },
+          types: ["(regions)"],
+        },
+        (
+          predictions: google.maps.places.AutocompletePrediction[] | null,
+          status: google.maps.places.PlacesServiceStatus
+        ) => {
+          if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+            setSuggestions(predictions || []);
+          } else {
+            setSuggestions([]);
+          }
         }
-      }
-    );
+      );
+    }
   };
 
   const getGeoProperty = (
@@ -97,11 +110,7 @@ const PlacesAutocomplete = () => {
       const province =
         getGeoProperty(results, "administrative_area_level_1") || "";
 
-      handleSearchBarbers(city, province);
-
-      if (window.location.pathname !== "/") {
-        window.location.href = "/";
-      }
+      handleSearchBarbers(city, province, address);
     } catch (error) {
       console.log("Error: ", error);
     }
@@ -127,7 +136,12 @@ const PlacesAutocomplete = () => {
       <div className="absolute right-3 top-[3px]">
         <button
           className="text-white bg-violet-700 px-4 py-1 rounded-2xl font-bold"
-          onClick={() => handleSelect(inputValue)}
+          onClick={() => {
+            if (window.location.pathname === "/") {
+              navigate("/barberias");
+              return;
+            }
+          }}
         >
           Search
         </button>
