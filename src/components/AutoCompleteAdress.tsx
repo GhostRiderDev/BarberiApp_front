@@ -102,10 +102,7 @@ const PlacesAutocomplete = () => {
     try {
       const results = await getGeocode({ address });
 
-      const city =
-        getGeoProperty(results, "administrative_area_level_2") ||
-        getGeoProperty(results, "locality") ||
-        "";
+      const city = getGeoProperty(results, "administrative_area_level_2") || getGeoProperty(results, "locality") || "";
 
       const province =
         getGeoProperty(results, "administrative_area_level_1") || "";
