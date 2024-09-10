@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { useLoadScript } from "@react-google-maps/api";
-import { getGeocode, getLatLng } from "use-places-autocomplete";
+import { getGeocode } from "use-places-autocomplete";
 import { Input } from "./ui/input";
-
 import { FaMapLocationDot } from "react-icons/fa6";
+import { findBarberiasByCityAndProvince } from "@/services/barberiaService";
+import { HomeContext } from "@/views/Home";
 
 export default function Places() {
   const { isLoaded } = useLoadScript({
@@ -16,7 +17,10 @@ export default function Places() {
 }
 
 const PlacesAutocomplete = () => {
+  const homeContext = useContext(HomeContext);
+  console.log("Home context: ", homeContext);
   const [inputValue, setInputValue] = useState("");
+
   const [suggestions, setSuggestions] = useState<
     google.maps.places.AutocompletePrediction[]
   >([]);
@@ -37,13 +41,25 @@ const PlacesAutocomplete = () => {
     }
   }, []);
 
-  const handleInputChange = (e: { target: { value: any } }) => {
+  const handleSearchBarbers = async (city: string, province: string) => {
+    console.log("City: ", city);
+    console.log("Province: ", province);
+    const barberiasFound = await findBarberiasByCityAndProvince(city, province);
+    homeContext.barberias = barberiasFound;
+    console.log("Barberias found: ", homeContext.barberias);
+  };
+
+  const handleInputChange = (e: { target: { value: string } }) => {
     const value = e.target.value;
     setInputValue(value);
     setOpen(true);
 
     autocompleteService.current!.getPlacePredictions(
-      { input: value, componentRestrictions: { country: "co" } },
+      {
+        input: value,
+        componentRestrictions: { country: "co" },
+        types: ["(regions)"],
+      },
       (
         predictions: google.maps.places.AutocompletePrediction[] | null,
         status: google.maps.places.PlacesServiceStatus
@@ -57,6 +73,14 @@ const PlacesAutocomplete = () => {
     );
   };
 
+  const getGeoProperty = (
+    results: google.maps.GeocoderResult[],
+    property: string
+  ) => {
+    return results[0].address_components.find((c) => c.types.includes(property))
+      ?.long_name;
+  };
+
   const handleSelect = async (address: string) => {
     setInputValue(address);
     setSuggestions([]);
@@ -64,8 +88,20 @@ const PlacesAutocomplete = () => {
 
     try {
       const results = await getGeocode({ address });
-      const { lat, lng } = await getLatLng(results[0]);
-      console.log("Coordinates: ", { lat, lng });
+
+      const city =
+        getGeoProperty(results, "administrative_area_level_2") ||
+        getGeoProperty(results, "locality") ||
+        "";
+
+      const province =
+        getGeoProperty(results, "administrative_area_level_1") || "";
+
+      handleSearchBarbers(city, province);
+
+      if (window.location.pathname !== "/") {
+        window.location.href = "/";
+      }
     } catch (error) {
       console.log("Error: ", error);
     }
@@ -74,19 +110,28 @@ const PlacesAutocomplete = () => {
   return (
     <div className="relative w-full">
       <Input
-
         placeholder="Buscar..."
-        className=" pl-[25px] text-md cursor-pointer duration-300 transition-all bg-white rounded-[50px]"
+        className=" pl-[45px] text-md cursor-pointer duration-300 transition-all bg-white rounded-[50px]"
         value={inputValue}
         onChange={handleInputChange}
         aria-expanded={open}
+        onClick={() => {
+          if (inputValue.length > 0) setInputValue("");
+        }}
       />
 
-      <div className="absolute right-3 top-[6px]">
+      <div className="absolute left-3 top-[6px]">
         <FaMapLocationDot className="w-6 h-6 text-violet-700 " />
-
       </div>
 
+      <div className="absolute right-3 top-[3px]">
+        <button
+          className="text-white bg-violet-700 px-4 py-1 rounded-2xl font-bold"
+          onClick={() => handleSelect(inputValue)}
+        >
+          Search
+        </button>
+      </div>
 
       {open && (
         <div className="absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded-md shadow-lg">
