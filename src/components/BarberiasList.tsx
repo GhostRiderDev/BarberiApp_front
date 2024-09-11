@@ -2,28 +2,68 @@ import { IBarberia } from "@/interfaces/IBarberia";
 import Rating from "./Rating";
 import { IoLocationOutline, IoTicket } from "react-icons/io5";
 import { FaEye } from "react-icons/fa6";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import React from "react";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 const BarberiasList = ({ barberias }: { barberias: IBarberia[] }) => {
-
-  if(barberias.length === 0) {
+  if (barberias.length === 0) {
     return (
       <div className="flex justify-center items-center h-[75vh] mx-auto text-center">
-        <h1 className="text-3xl font-bold text-gray-400 ">No hay barberias disponibles</h1>
+        <h1 className="text-3xl font-bold text-gray-400 ">
+          No hay barberias disponibles
+        </h1>
       </div>
-    )
+    );
   }
 
   return (
     <div>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-8">
         {barberias !== undefined &&
           barberias.map((barberia: IBarberia) => (
-            <div className="w-11/12 md:w-[300px] h-[50vh]  rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 mx-auto md:mx-0">
-              <img
-                src={barberia.banner_url}
-                alt={`Imagen de ${barberia.name}`}
-                className="w-full h-[50%] object-cover rounded-t-lg"
-              />
+            <div
+              className="w-10/12 md:w-[300px] h-[35vh] md:h-[42vh]  rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 mx-auto md:mx-0"
+              key={barberia.id}
+            >
+              <div>
+                <Swiper
+                  modules={[Navigation, Pagination, Scrollbar, A11y]}
+                  spaceBetween={50}
+                  slidesPerView={1}
+                  navigation
+                  pagination={{
+                    clickable: true,
+                  }}
+                  style={
+                    {
+                      "--swiper-navigation-color": "#fff",
+                      "--swiper-pagination-color": "#fff",
+                      "--swiper-navigation-size": "23px",
+                    } as React.CSSProperties
+                  }
+                >
+                  {[
+                    barberia.banner_url,
+                    "https://via.placeholder.com/200",
+                    "https://via.placeholder.com/150",
+                  ].map((url, index) => (
+                    <SwiperSlide key={index}>
+                      <img
+                        src={url}
+                        alt="Slide 1"
+                        className="w-full h-[15vh] md:h-[20vh] object-cover"
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+
               <div className="flex h-[50%] gap-1 px-4 py-1 bg-[#cfcece30] rounded-b-xl  ">
                 <div className="w-4/5 gap-2">
                   <h2 className="text-xl text-black font-semibold">
@@ -58,6 +98,7 @@ const BarberiasList = ({ barberias }: { barberias: IBarberia[] }) => {
                     <IoTicket />
                   </button>
                 </div>
+               
               </div>
             </div>
           ))}
