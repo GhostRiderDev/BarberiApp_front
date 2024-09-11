@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarLandingProps {
   type: "transparente" | "opacity";
@@ -7,6 +8,7 @@ interface NavbarLandingProps {
 
 const NavbarLanding = ({ type, theme }: NavbarLandingProps) => {
   const [scrolling, setScrolling] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +25,14 @@ const NavbarLanding = ({ type, theme }: NavbarLandingProps) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleClickLogo = () => {
+    navigate("/");
+  };
+
+  const handleClickLogin = () => {
+    navigate("/auth");
+  };
 
   return (
     <nav
@@ -43,17 +53,17 @@ const NavbarLanding = ({ type, theme }: NavbarLandingProps) => {
           }`}
         >
           <img src="./logodemo.png" alt="logo" className="h-16 -ml-3" />
-          <a href="/" className="-ml-4 font-bold">
+          <button
+            onClick={handleClickLogo}
+            className="-ml-4 cursor-pointer font-bold"
+          >
             BarberClick
-          </a>
+          </button>
         </div>
         <div className="flex items-center">
           <button
-            className={`"relative px-3 py-1 overflow-hidden ${
-              theme === "light" ? "text-black" : "text-white"
-            } border ${
-              theme === "light" ? "border-black" : "border-white"
-            } rounded-full group"`}
+            onClick={handleClickLogin}
+            className="relative px-3 py-1 overflow-hidden text-white border border-white rounded-full group"
           >
             <span className="relative z-10">Iniciar sesión</span>
             <div className="absolute inset-0 w-full h-full transition-transform duration-300 ease-out origin-left transform scale-x-0 bg-[#d6d6d638] group-hover:scale-x-100"></div>

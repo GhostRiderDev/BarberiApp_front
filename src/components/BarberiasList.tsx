@@ -12,12 +12,25 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 const BarberiasList = ({ barberias }: { barberias: IBarberia[] }) => {
+  if (barberias.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-[75vh] mx-auto text-center">
+        <h1 className="text-3xl font-bold text-gray-400 ">
+          No hay barberias disponibles
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="flex flex-wrap gap-8">
         {barberias !== undefined &&
           barberias.map((barberia: IBarberia) => (
-            <div className="w-10/12 md:w-[300px] h-[35vh] md:h-[42vh]  rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 mx-auto md:mx-0">
+            <div
+              className="w-10/12 md:w-[300px] h-[35vh] md:h-[42vh]  rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 mx-auto md:mx-0"
+              key={barberia.id}
+            >
               <div>
                 <Swiper
                   modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -85,6 +98,7 @@ const BarberiasList = ({ barberias }: { barberias: IBarberia[] }) => {
                     <IoTicket />
                   </button>
                 </div>
+               
               </div>
             </div>
           ))}

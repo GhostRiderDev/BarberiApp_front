@@ -5,6 +5,7 @@ import BarberiasView from "./views/Barberias";
 import Home from "./views/Home";
 import NotFound from "./views/NotFound";
 import { useLoadScript } from "@react-google-maps/api";
+import Login from "./views/Login";
 
 function App() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string;
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/barberias" element={<BarberiasView />} />
+        <Route path="/auth" element={<Login />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/business" element={<Business />} />
       </Routes>
