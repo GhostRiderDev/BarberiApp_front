@@ -27,21 +27,29 @@ const MapUbications = () => {
     return -76.635 + Math.random() * 0.01;
   };
 
+    const mapOptions = {
+      disableDefaultUI: true,
+      mapTypeControl: false, 
+      streetViewControl: false,
+    };
+
   return (
     <GoogleMap
-      mapContainerStyle={{ height: "80%", width: "100%", borderRadius: "1rem" }}
+      mapContainerStyle={{ height: "100%", width: "100%" }}
       center={{ lat: 7.8847222222222, lng: -76.635 }}
       zoom={14}
+      options={mapOptions}
     >
-      {barberias.map((barberia) => (
-        <Marker
-          key={barberia.id}
-          position={{
-            lat: parseFloat(generateRandomLat() + ""),
-            lng: parseFloat(generateRandomLng() + ""),
-          }}
-        />
-      ))}
+      {barberias !== undefined &&
+        barberias.map((barberia) => (
+          <Marker
+            key={barberia.id}
+            position={{
+              lat: parseFloat(generateRandomLat() + ""),
+              lng: parseFloat(generateRandomLng() + ""),
+            }}
+          />
+        ))}
     </GoogleMap>
   );
 };

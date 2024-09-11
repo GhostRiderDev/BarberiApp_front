@@ -84,13 +84,13 @@ const CardBarber: React.FC = () => {
 
             <div className="flex gap-4 overflow-hidden">
                 {barbers.slice(currentIndex, currentIndex + cardsPerPage).map((barber) => (
-                    <div key={barber.id} className="w-[300px] h-[80%] rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out">
+                    <div key={barber.id} className="w-[300px] h-[80%] rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out ">
                         <img 
                             src={barber.bannerUrl} 
                             alt={`Imagen de ${barber.name}`} 
                             className="w-full h-[50%] object-cover rounded-t-lg" 
                         />
-                        <div className="flex h-[50%] flex-col gap-2 px-4 py-2 bg-[#d6d6d630] rounded-b-xl">
+                        <div className="flex h-[50%] flex-col gap-2 px-4 py-2 bg-[#d6d6d630] rounded-b-xl ">
                             <h2 className="text-xl text-white font-semibold">{barber.name}</h2>
                             <div className="flex items-center text-gray-600">
                                 <IoLocationOutline className="mr-2 text-red-600 text-xl" />
