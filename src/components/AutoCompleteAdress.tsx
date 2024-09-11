@@ -16,10 +16,16 @@ export default function Places() {
 }
 
 const PlacesAutocomplete = () => {
+  const addressLocalStorage = localStorage.getItem("address");
   const { location, setLocation } = useLocationStore(
     (state: ILocationStore) => state
   );
-  const [inputValue, setInputValue] = useState(location.address || "");
+  const [inputValue, setInputValue] = useState(
+    addressLocalStorage || location.address || ""
+  );
+
+
+
   const setBarberias = useBarberiasStore(
     (state: IBarberiasStore) => state.setBarberias
   );
@@ -57,6 +63,8 @@ const PlacesAutocomplete = () => {
     console.log("Address: ", address);
     setBarberias(barberiasFound);
     setLocation({ city, province, address });
+    localStorage.setItem("address", address);
+    localStorage.setItem("barberias", JSON.stringify(barberiasFound));
     navigate("/barberias");
   };
 
@@ -125,7 +133,11 @@ const PlacesAutocomplete = () => {
         onChange={handleInputChange}
         aria-expanded={open}
         onClick={() => {
-          if (inputValue.length > 0) setInputValue("");
+          if (inputValue.length > 0) {
+            setInputValue("");
+            localStorage.setItem("address", "");
+            setLocation({ city: "", province: "", address: "" });
+          }
         }}
       />
 
