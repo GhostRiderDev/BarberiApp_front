@@ -19,6 +19,27 @@ const NavbarLanding: React.FC = () => {
     };
   }, []);
 
+import { useState, useEffect } from "react";
+
+const NavbarLanding: React.FC = () => {
+  const [scrolling, setScrolling] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 120) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolling ? "bg-gray-800" : "bg-transparent"

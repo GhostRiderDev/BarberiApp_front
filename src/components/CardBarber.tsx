@@ -7,6 +7,7 @@ const CardBarber: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cardsPerPage, setCardsPerPage] = useState(1);
 
+
     const barbers = [
         {
             id: 1,
@@ -53,7 +54,7 @@ const CardBarber: React.FC = () => {
         };
 
         window.addEventListener('resize', handleResize);
-        handleResize(); 
+        handleResize(); // Ajuste inicial
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -72,6 +73,7 @@ const CardBarber: React.FC = () => {
 
     return (
         <div className="flex flex-row w-full h-full items-center justify-center gap-4">
+
             <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
@@ -82,19 +84,19 @@ const CardBarber: React.FC = () => {
 
             <div className="flex gap-4 overflow-hidden">
                 {barbers.slice(currentIndex, currentIndex + cardsPerPage).map((barber) => (
-                    <div key={barber.id} className="w-[300px] h-[80%] rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out">
+                    <div key={barber.id} className="w-[300px] h-[80%] rounded-xl shadow-lg transform transition-transform duration-300 ease-in-out ">
                         <img 
                             src={barber.bannerUrl} 
                             alt={`Imagen de ${barber.name}`} 
                             className="w-full h-[50%] object-cover rounded-t-lg" 
                         />
-                        <div className="flex h-[50%] flex-col gap-2 px-4 py-2 bg-[#d6d6d630] rounded-b-xl">
+                        <div className="flex h-[50%] flex-col gap-2 px-4 py-2 bg-[#d6d6d630] rounded-b-xl ">
                             <h2 className="text-xl text-white font-semibold">{barber.name}</h2>
                             <div className="flex items-center text-gray-600">
                                 <IoLocationOutline className="mr-2 text-red-600 text-xl" />
                                 <span className='text-white'>{barber.location}</span>
                             </div>
-                            <div className='flex flex-row gap-2  text-yellow-400'>
+                            <div className='flex flex-row gap-2 text-yellow-400'>
                                 <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
                             </div>
                             <div className="flex flex-row flex-wrap gap-4">
