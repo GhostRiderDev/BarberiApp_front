@@ -109,6 +109,7 @@ const CardBarber: React.FC = () => {
                 ))}
             </div>
 
+            {/* Botón para avanzar */}
             <button
                 onClick={handleNext}
                 disabled={currentIndex >= barbers.length - cardsPerPage}
