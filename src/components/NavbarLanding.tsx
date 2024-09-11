@@ -33,11 +33,11 @@ const NavbarLanding: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolling ? "bg-gray-800 shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolling ? "bg-gray-800" : "bg-transparent"
         }`}
     >
-      <div className="flex justify-between w-full mx-auto px-4 md:max-w-[1400px] md:mx-auto">
-        <div className="flex items-center text-white">
+      <div className="flex justify-between w-full mx-auto px-4">
+        <div className="flex text-white items-center">
           <img src="./logodemo.png" alt="logo" className="h-16 -ml-3" />
           <button onClick={handleClickLogo} className="-ml-4 cursor-pointer font-bold">BarberClick</button>
           
@@ -49,9 +49,8 @@ const NavbarLanding: React.FC = () => {
           </button>
         </div>
       </div>
-    </nav>
+    </nav> 
   );
 };
 
 export default NavbarLanding;
-
