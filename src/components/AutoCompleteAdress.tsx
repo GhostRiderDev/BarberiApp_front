@@ -133,7 +133,7 @@ const PlacesAutocomplete = () => {
         <FaMapLocationDot className="w-6 h-6 text-violet-700 " />
       </div>
 
-      <div className="absolute right-3 top-[3px]">
+      <div className="absolute right-1 top-[2px]">
         <button
           className="text-white bg-violet-700 px-4 py-1 rounded-2xl font-bold"
           onClick={() => {
