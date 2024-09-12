@@ -21,14 +21,12 @@ const Business = () => {
                     </div>
                 </div>
 
-                <div className="h-[310px] hidden md:block">
+                <div className="flex justify-center items-center md:mb-[350px]">
+                    <div className="absolute top-[340px] hidden md:block">
+                        <img className="h-[420px] w-[660px] rounded-xl lg:w-[800px]" src="https://img.freepik.com/vector-gratis/aplicacion-reserva-peluqueria_23-2148570793.jpg?t=st=1725672506~exp=1725676106~hmac=49a8f03a40cd59d79bed19a3683145bcc875c5839acf203ef39e27540fa9fd43&w=740" alt="" />
+
+                    </div>
                 </div>
-                <div className="absolute top-[340px] right-[90px] hidden md:block lg:right-[260px]  ">
-                    <img className="h-[420px] w-[660px] rounded-xl lg:w-[800px]" src="https://img.freepik.com/vector-gratis/aplicacion-reserva-peluqueria_23-2148570793.jpg?t=st=1725672506~exp=1725676106~hmac=49a8f03a40cd59d79bed19a3683145bcc875c5839acf203ef39e27540fa9fd43&w=740" alt="" />
-
-                </div>
-
-
 
                 <div className=" z-10 relative bg-slate-50 flex flex-col justify-center gap-10 lg:flex-row ">
                     <SectionInit />
