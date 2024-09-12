@@ -40,11 +40,11 @@ const CardBusinessInfo = () => {
 
     return (
         <>
-            <div className="flex flex-col font-medium gap-6 pt-10 ">
+            <div className="flex flex-col font-medium gap-6 pt-10 m-6">
                 <div className="text-2xl font-bold text-center lg:text-3xl">Una solución completa para gestionar y hacer crecer tu negocio</div>
                 <div className="text-lg text-center m-2 lg:text-xl">Incluye todas las herramientas que necesitas para aumentar las ventas, gestionar tu calendario y fidelizar clientes para que te puedas dedicar a lo que mejor sabes hacer.</div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:m-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 ">
                     {infoData.map((info, index) => (
                         <div key={index} className="bg-slate-100 flex flex-col gap-2 m-4 p-4 border rounded-lg shadow-md  ">
                             <div className="text-[40px] mb-2 text-violet-700">{info.icon}</div>

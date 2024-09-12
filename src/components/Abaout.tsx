@@ -10,7 +10,7 @@ const Abaout = () => {
         <>
             <div className="bg-gray-100 py-8 flex flex-col md:flex-row md:gap-10">
                 <div className="flex flex-col gap-6 m-[34px] md:w-[550px] ">
-                    <div className="text-black text-3xl font-bold">BarberClik para
+                    <div className="text-black text-3xl font-bold">BarberClick para
                         tu negocio</div>
                     <div className="text-lg font-sans md:text-2xl">Potencie su negocio de forma gratuita con la mejor plataforma de reservas para servicios de barberias.</div>
                     <div className="">
