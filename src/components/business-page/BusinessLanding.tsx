@@ -42,8 +42,11 @@ const Business = () => {
                 <div className="flex flex-col ">
                     <CardBusinessInfo />
                 </div>
+
             </div>
         </>
     );
 };
 export default Business;
+
+
