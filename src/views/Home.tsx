@@ -13,7 +13,7 @@ const Home: React.FC = () => {
   return (
     <>
       <div className="w-full xl:w-full ">
-        <NavbarLanding />
+        <NavbarLanding type="transparente" theme="dark" />
         <div className="bg-home2 gap-20 flex flex-col justify-center items-center w-full h-[50rem]">
           <HomeContext.Provider value={{ barberias: [] }}>
             <SearchBarber />
