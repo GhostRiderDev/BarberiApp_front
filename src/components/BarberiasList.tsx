@@ -98,7 +98,7 @@ const BarberiasList = ({ barberias }: { barberias: IBarberia[] }) => {
                     <IoTicket />
                   </button>
                 </div>
-               
+
               </div>
             </div>
           ))}

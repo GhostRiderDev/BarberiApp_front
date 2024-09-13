@@ -31,7 +31,7 @@ const NavbarLanding = ({ type, theme }: NavbarLandingProps) => {
   };
 
   const handleClickLogin = () => {
-    navigate("/auth");
+    navigate("/login");
   };
 
   return (
@@ -70,7 +70,7 @@ const NavbarLanding = ({ type, theme }: NavbarLandingProps) => {
           </button>
         </div>
       </div>
-    </nav>
+    </nav> 
   );
 };
 

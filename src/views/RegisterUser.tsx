@@ -13,7 +13,7 @@ const RegisterUser = () => {
     const [image, setImage] = useState<File | null>(null);
 
     const handleClickBack = () => {
-        navigate('/auth')
+        navigate('/login')
     }
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
