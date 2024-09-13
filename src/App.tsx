@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/barberias" element={<BarberiasView />} />
-        <Route path="/auth" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/business" element={<Business />} />
         <Route path="/register" element={<RegisterUser/>}/>
