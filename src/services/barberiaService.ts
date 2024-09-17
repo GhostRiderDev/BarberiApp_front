@@ -18,3 +18,17 @@ export const findBarberiasByCityAndProvince = async (
     console.error(error);
   }
 };
+
+export const findBarberiaById = async (id: string) => {
+  try {
+    const response = await fetch(`${apiUrl}/barberia/${id}`);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.error(error);
+  }
+};

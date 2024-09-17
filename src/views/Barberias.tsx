@@ -1,47 +1,13 @@
-// import { findBarberiasByCityAndProvince } from "@/services/barberiaService";
 import AutoCompleteAdress from "@/components/AutoCompleteAdress";
 import BarberiasList from "@/components/BarberiasList";
 import MapUbications from "@/components/MapUbications";
 import NavbarLanding from "@/components/NavbarLanding";
-import { IBarberia } from "@/interfaces/IBarberia";
-import {
-  IBarberiasStore,
-  useBarberiasStore,
-  useLocationStore,
-} from "@/store/barberiasStore";
-import { useEffect, useState } from "react";
+import { useAddress } from "@/hooks/useAddress";
+import { useBarberias } from "@/hooks/useBarberias";
 
 const BarberiasView = () => {
-  const [address, setAddress] = useState("");
-  const barberiasLS: IBarberia[] = JSON.parse(
-    localStorage.getItem("barberias") || "[]"
-  );
-  const barberiasStore = useBarberiasStore(
-    (state: IBarberiasStore) => state.barberias
-  );
-  const setBarberias = useBarberiasStore(
-    (state: IBarberiasStore) => state.setBarberias
-  );
-  const addressStore = useLocationStore((state) => state.location.address);
-
-  const barberias = barberiasStore.length > 0 ? barberiasStore : barberiasLS;
-
-  useEffect(() => {
-    const addressLocalStorage = localStorage.getItem("address") || "";
-    const addressDefined = addressStore || addressLocalStorage;
-    console.log("Address: ", addressDefined);
-    setAddress(addressDefined);
-  }, [address, addressStore]);
-
-  useEffect(() => {
-    if (barberiasStore.length === 0 && barberiasLS.length > 0) {
-      setBarberias(barberiasLS);
-    }
-  }, [barberiasStore, barberiasLS, setBarberias]);
-
-  useEffect(() => {
-    localStorage.setItem("barberias", JSON.stringify(barberiasStore));
-  }, [barberiasStore]);
+  const address = useAddress();
+  const barberias = useBarberias();
 
   return (
     <div className="p-1 md:p-2  h-full">

@@ -52,7 +52,7 @@ const NavbarLanding = ({ type, theme }: NavbarLandingProps) => {
             theme === "dark" ? "text-white" : "text-black"
           }`}
         >
-          <img src="./logodemo.png" alt="logo" className="h-16 -ml-3" />
+          <img src="/logodemo.png" alt="logo" className="h-16 -ml-3" />
           <button
             onClick={handleClickLogo}
             className="-ml-4 cursor-pointer font-bold"
