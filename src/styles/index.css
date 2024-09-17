@@ -29,6 +29,7 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -56,6 +57,7 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -74,6 +76,7 @@
   /* fondo */
   --c: #1b1b1b;
   --_s: calc(2 * var(--s)) calc(2 * var(--s));
+  --_s: calc(2 * var(--s)) calc(2 * var(--s));
   --_g: 35.36% 35.36% at;
   /* lineas */
   --_c: #0000 66%, #3d3053 68% 70%, #0000 72%;
@@ -84,6 +87,14 @@
     radial-gradient(var(--_g) 0 75%, var(--_c)) 0 0 / var(--_s),
     repeating-conic-gradient(var(--c) 0 25%, #0000 0 50%) 0 0 / var(--_s),
     radial-gradient(var(--_c)) 0 calc(var(--s) / 2) / var(--s) var(--s) var(--c);
+  background: radial-gradient(var(--_g) 100% 25%, var(--_c)) var(--s) var(--s) /
+      var(--_s),
+    radial-gradient(var(--_g) 0 75%, var(--_c)) var(--s) var(--s) / var(--_s),
+    radial-gradient(var(--_g) 100% 25%, var(--_c)) 0 0 / var(--_s),
+    radial-gradient(var(--_g) 0 75%, var(--_c)) 0 0 / var(--_s),
+    repeating-conic-gradient(var(--c) 0 25%, #0000 0 50%) 0 0 / var(--_s),
+    radial-gradient(var(--_c)) 0 calc(var(--s) / 2) / var(--s) var(--s) var(--c);
   background-attachment: fixed;
 }
+
 
