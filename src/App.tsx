@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Business from "./components/business-page/BusinessLanding";
-import BarberiasView from "./views/Barberias";
 import Home from "./views/Home";
 import NotFound from "./views/NotFound";
 import { useLoadScript } from "@react-google-maps/api";
 import Login from "./views/Login";
 import BarberiaView from "./views/Barberia";
+import RegisterUser from "./views/RegisterUser";
+import BarberiasView from "./views/Barberias";
 
 function App() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string;
@@ -34,8 +35,9 @@ function App() {
         <Route path="/auth" element={<Login />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/business" element={<Business />} />
+        <Route path="/register" element={<RegisterUser />} />
       </Routes>
-        <Footer />
+      <Footer />
     </div>
   );
 }
