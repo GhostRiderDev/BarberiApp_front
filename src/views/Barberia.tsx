@@ -59,6 +59,7 @@ const BarberiaView = () => {
                         alt="gallery"
                         className="block h-full w-full rounded-lg object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out"
                         src="https://assets.setmore.com/website/v2/images/industry-pages/barber-shops/setmore-client-barber-haircut.png"
+                        loading="lazy"
                       />
                     </div>
                     <div className="w-1/2 p-1 md:p-2">
@@ -66,6 +67,7 @@ const BarberiaView = () => {
                         alt="gallery"
                         className="block h-full w-full rounded-lg object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out"
                         src="https://www.shutterstock.com/image-photo/attractive-happy-man-smiling-while-600nw-2267242719.jpg"
+                        loading="lazy"
                       />
                     </div>
                     <div className="w-full p-1 md:p-2">
@@ -73,6 +75,7 @@ const BarberiaView = () => {
                         alt="gallery"
                         className="block h-full w-full rounded-lg object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out"
                         src="https://media.istockphoto.com/id/506514230/photo/beard-grooming.jpg?s=612x612&w=0&k=20&c=QDwo1L8-f3gu7mcHf00Az84fVU8oNpQLgvUw6eGPEkc="
+                        loading="eager"
                       />
                     </div>
                   </div>
@@ -82,6 +85,7 @@ const BarberiaView = () => {
                         alt="gallery"
                         className="block h-full w-full rounded-lg object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out"
                         src="https://www.designsystem.es/wp-content/uploads/2023/08/barberias.jpg"
+                        loading="eager"
                       />
                     </div>
                     <div className="w-1/2 p-1 md:p-2">
@@ -89,6 +93,7 @@ const BarberiaView = () => {
                         alt="gallery"
                         className="block h-full w-full rounded-lg object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out"
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSzF1KoGsi8PIFkMfJwusX4ugFafFzvkxy0w&s"
+                        loading="lazy"
                       />
                     </div>
                     <div className="w-1/2 p-1 md:p-2">
@@ -96,6 +101,7 @@ const BarberiaView = () => {
                         alt="gallery"
                         className="block h-full w-full rounded-lg object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out"
                         src="https://aprende.com/wp-content/uploads/2023/01/como-nombrar-una-barberia.jpg"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -177,6 +183,7 @@ const BarberiaView = () => {
                         alt="team"
                         className="block h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] rounded-full object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out mx-auto"
                         src="https://cdn-partners-api.fresha.com/user-account-avatars/processed/372378/medium/198a3c38-a7cb-416e-bade-d5800c68fa3c-avatar.jpeg?class=square128"
+                        loading="lazy"
                       />
                       <header className="col-span-3 flex flex-col justify-center items-center">
                         <h2 className="text-lg font-semibold">Maria</h2>
@@ -188,6 +195,7 @@ const BarberiaView = () => {
                         alt="team"
                         className="block h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] rounded-full object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out mx-auto"
                         src="https://cdn-partners-api.fresha.com/user-account-avatars/processed/372378/medium/198a3c38-a7cb-416e-bade-d5800c68fa3c-avatar.jpeg?class=square128"
+                        loading="lazy"
                       />
                       <header className="col-span-3 flex flex-col justify-center items-center">
                         <h2 className="text-lg font-semibold">Maria</h2>
@@ -199,39 +207,20 @@ const BarberiaView = () => {
                         alt="team"
                         className="block h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] rounded-full object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out mx-auto"
                         src="https://cdn-partners-api.fresha.com/user-account-avatars/processed/372378/medium/198a3c38-a7cb-416e-bade-d5800c68fa3c-avatar.jpeg?class=square128"
+                        loading="lazy"
                       />
                       <header className="col-span-3 flex flex-col justify-center items-center">
                         <h2 className="text-lg font-semibold">Maria</h2>
                         <p className="text-gray-500 font-light">Barbero</p>
                       </header>
                     </div>
+
                     <div className="p-1 md:p-2">
                       <img
                         alt="team"
                         className="block h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] rounded-full object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out mx-auto"
                         src="https://cdn-partners-api.fresha.com/user-account-avatars/processed/372378/medium/198a3c38-a7cb-416e-bade-d5800c68fa3c-avatar.jpeg?class=square128"
-                      />
-                      <header className="col-span-3 flex flex-col justify-center items-center">
-                        <h2 className="text-lg font-semibold">Maria</h2>
-                        <p className="text-gray-500 font-light">Barbero</p>
-                      </header>
-                    </div>
-                    <div className="p-1 md:p-2">
-                      <img
-                        alt="team"
-                        className="block h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] rounded-full object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out mx-auto"
-                        src="https://cdn-partners-api.fresha.com/user-account-avatars/processed/372378/medium/198a3c38-a7cb-416e-bade-d5800c68fa3c-avatar.jpeg?class=square128"
-                      />
-                      <header className="col-span-3 flex flex-col justify-center items-center">
-                        <h2 className="text-lg font-semibold">Maria</h2>
-                        <p className="text-gray-500 font-light">Barbero</p>
-                      </header>
-                    </div>
-                    <div className="p-1 md:p-2">
-                      <img
-                        alt="team"
-                        className="block h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] rounded-full object-cover object-center hover:scale-105 transition-transform duration-500 ease-in-out mx-auto"
-                        src="https://cdn-partners-api.fresha.com/user-account-avatars/processed/372378/medium/198a3c38-a7cb-416e-bade-d5800c68fa3c-avatar.jpeg?class=square128"
+                        loading="lazy"
                       />
                       <header className="col-span-3 flex flex-col justify-center items-center">
                         <h2 className="text-lg font-semibold">Maria</h2>
