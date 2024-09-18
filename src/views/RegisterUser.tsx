@@ -52,6 +52,16 @@ const RegisterUser = () => {
     navigate("/auth");
   };
 
+  const isBasicUserDataEmpty = () => {
+    return (
+      userData.name === "" || userData.email === "" || userData.phone === ""
+    );
+  };
+
+  const isAddtionaUserDataEmpty = () => {
+    return userData.password === "";
+  };
+
   return (
     <section className="flex h-svh">
       <div className="flex flex-col items-center w-full gap-10 p-4 bg-white">
@@ -78,7 +88,10 @@ const RegisterUser = () => {
                 <li
                   className="flex items-center text-gray-500  space-x-1  cursor-pointer"
                   key={index}
-                  onClick={() => setPage(index + 1)}
+                  onClick={() => {
+                    if (page === 1 && !isBasicUserDataEmpty()) setPage(2);
+                    if (page === 2 && !isAddtionaUserDataEmpty()) setPage(3);
+                  }}
                 >
                   <span
                     className={`
