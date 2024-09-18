@@ -36,18 +36,21 @@ const NavbarLanding = ({ type, theme }: NavbarLandingProps) => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolling
-        ? "bg-gray-800 shadow-md"
-        : `${type === "transparente"
-          ? "bg-transparent"
-          : `${theme === "dark" ? "bg-gray-800" : "bg-white"}`
-        }`
-        }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolling
+          ? "bg-gray-800 shadow-md"
+          : `${
+              type === "transparente"
+                ? "bg-transparent"
+                : `${theme === "dark" ? "bg-gray-800" : "bg-white"}`
+            }`
+      }`}
     >
       <div className="flex justify-between w-full mx-auto px-4 md:max-w-[1400px] md:mx-auto">
         <div
-          className={`flex items-center ${theme === "dark" ? "text-white" : "text-black"
-            }`}
+          className={`flex items-center ${
+            theme === "dark" ? "text-white" : "text-black"
+          }`}
         >
           <img src="/logodemo.png" alt="logo" className="h-16 -ml-3" />
           <button
