@@ -8,6 +8,7 @@ import Login from "./views/Login";
 import BarberiaView from "./views/Barberia";
 import RegisterUser from "./views/RegisterUser";
 import BarberiasView from "./views/Barberias";
+import RegisterBarber from "./views/RegisterBarber";
 
 function App() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string;
@@ -36,6 +37,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/business" element={<Business />} />
         <Route path="/register" element={<RegisterUser />} />
+        <Route path="/registerBarber" element={<RegisterBarber />} />
       </Routes>
       <Footer />
     </div>
