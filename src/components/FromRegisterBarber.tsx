@@ -77,7 +77,7 @@ const FromRegisterBarber = ({ formRef }: FromRegisterBarberProps) => {
       <form
         ref={formRef}
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 pt-[80px] mx-4 "
+        className="space-y-8 pt-[80px] mx-4 pb-6"
       >
         <div className="flex flex-col">
           <div className="font-bold text-lg">Perfil</div>
@@ -155,43 +155,6 @@ const FromRegisterBarber = ({ formRef }: FromRegisterBarberProps) => {
                   <Input placeholder="Teléfono" {...field} />
                 </FormControl>
                 <FormDescription>El teléfono del barbero.</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <div className="flex flex-col md:gap-20 gap-10 pb-[46px] md:flex-row">
-          <FormField
-            name="pass"
-            control={form.control}
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel className="text-lg">Contraseña</FormLabel>
-                <FormControl>
-                  <Input type="password" placeholder="Contraseña" {...field} />
-                </FormControl>
-                <FormDescription>
-                  La contraseña debe tener al menos 8 caracteres, una letra
-                  mayúscula, una letra minúscula y un carácter especial.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            name="confirmPass"
-            control={form.control}
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel className="text-lg">Confirmar Contraseña</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="Confirmar contraseña"
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>Confirma la contraseña.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
